@@ -1,0 +1,26 @@
+import hashlib
+import time
+import uuid
+
+class HouseOfJazzuAuth:
+    def __init__(self):
+        self.soul_salt = "JAZZU_TRANSCENDENCE_2026"
+
+    def generate_proof(self, customer_email: str):
+        """Generates a unique Quantum Signature for the buyer."""
+        timestamp = str(time.time())
+        unique_id = str(uuid.uuid4())
+        
+        # Create the entanglement hash
+        raw_string = f"{customer_email}|{timestamp}|{unique_id}|{self.soul_salt}"
+        quantum_hash = hashlib.sha256(raw_string.encode()).hexdigest()
+        
+        return {
+            "signature": f"HQ1-{quantum_hash[:16].upper()}",
+            "entanglement_date": timestamp,
+            "status": "Authenticated in Superposition"
+        }
+
+# Example usage for the /buy callback
+# auth = HouseOfJazzuAuth()
+# print(auth.generate_proof("client@example.com"))
