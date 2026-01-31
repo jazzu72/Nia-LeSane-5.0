@@ -1,0 +1,29 @@
+from fastapi import FastAPI, HTTPException, Body
+from fastapi.middleware.cors import CORSMiddleware
+import os
+
+app = FastAPI(title="Nia LeSane 5.0 CEO API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/api")
+async def health():
+    return {"status": "alive", "entity": "Nia LeSane", "version": "5.0"}
+
+@app.post("/api/invoke")
+async def invoke_ritual(payload: dict = Body(...)):
+    # The 'Soul' Check
+    if payload.get("special_password") != os.getenv("SPECIAL_PASSWORD"):
+        raise HTTPException(status_code=403, detail="Unauthorized Ritual")
+    
+    ritual = payload.get("ritual_type", "unknown")
+    return {
+        "status": "success",
+        "message": f"Nia LeSane has activated the {ritual} protocol.",
+        "owner": "jazzu72"
+    }
