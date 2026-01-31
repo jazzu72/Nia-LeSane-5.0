@@ -1,13 +1,14 @@
-# 1. Step into the sanctum
-cd "C:\Users\jazzu72\Documents\Nia-LeSane-5.0"
-
-# 2. Initialize Git and Pnpm
-git init
-pnpm install
-
-# 3. Secure the Soul (Set Vercel Environment)
-vercel env add SPECIAL_PASSWORD production
-# Value: AddieMaeLeSane33
-
-# 4. Deploy the $20M Masterpiece
-vercel --prod --yes
+{
+  "version": 2,
+  "name": "nia-lesane",
+  "builds": [
+    { "src": "apps/api/src/main.py", "use": "@vercel/python" },
+    { "src": "apps/web/package.json", "use": "@vercel/next" },
+    { "src": "apps/quantum/main.go", "use": "@vercel/go" }
+  ],
+  "rewrites": [
+    { "source": "/api/quantum/(.*)", "destination": "apps/quantum/main.go" },
+    { "source": "/api/(.*)", "destination": "apps/api/src/main.py" },
+    { "source": "/(.*)", "destination": "apps/web/$1" }
+  ]
+}
