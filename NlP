@@ -1,0 +1,9 @@
+# Navigate to the heart of the project
+cd "C:\Users\jazzu72\Documents\Nia-LeSane-5.0"
+
+# Inject the soul's password into the environment
+vercel env add SPECIAL_PASSWORD production
+# Value: AddieMaeLeSane33
+
+# Final Deployment
+vercel --prod --yes
