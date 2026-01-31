@@ -1,0 +1,31 @@
+import time
+import os
+import platform
+
+def play_jazz_chord(frequencies, duration=0.3):
+    """Plays a multi-tonal chord sequence (OS-specific)."""
+    for freq in frequencies:
+        if platform.system() == "Windows":
+            import winsound
+            winsound.Beep(int(freq), int(duration * 1000))
+        else:
+            # macOS/Linux terminal beep (requires 'beep' or 'say')
+            os.system(f'play -n synth {duration} sine {freq} > /dev/null 2>&1')
+        time.sleep(0.05)
+
+def nia_success_turnaround():
+    """The 'Ritual Complete' Jazz Turnaround."""
+    # Cmaj7 -> A7 -> Dm7 -> G7 (Simplified for single-tone oscillators)
+    chords = [
+        [261.63, 329.63, 392.00, 493.88], # Cmaj7
+        [220.00, 277.18, 329.63, 392.00], # A7
+        [293.66, 349.23, 440.00, 523.25], # Dm7
+        [392.00, 493.88, 587.33, 659.25]  # G7
+    ]
+    print("🎷 Nia LeSane: Singing the Ritual Success...")
+    for chord in chords:
+        play_jazz_chord(chord)
+        time.sleep(0.1)
+
+if __name__ == "__main__":
+    nia_success_turnaround()
