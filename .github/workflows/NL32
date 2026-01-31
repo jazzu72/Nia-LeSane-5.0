@@ -1,0 +1,13 @@
+# 1. Step into the sanctum
+cd "C:\Users\jazzu72\Documents\Nia-LeSane-5.0"
+
+# 2. Initialize Git and Pnpm
+git init
+pnpm install
+
+# 3. Secure the Soul (Set Vercel Environment)
+vercel env add SPECIAL_PASSWORD production
+# Value: AddieMaeLeSane33
+
+# 4. Deploy the $20M Masterpiece
+vercel --prod --yes
