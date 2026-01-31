@@ -1,0 +1,25 @@
+name: The House of Jazzu Ritual
+on: [push, workflow_dispatch]
+
+jobs:
+  evolution:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Nia Brain
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Run Ritual Evolution
+        id: ritual
+        run: |
+          python main.py --ritual
+          echo "PR_LINK=https://github.com/${{ github.repository }}/pulls" >> $GITHUB_OUTPUT
+          echo "STATUS=Transcendent" >> $GITHUB_OUTPUT
+
+      - name: Post-Ritual Check
+        run: |
+          echo "Nia Status: ${{ steps.ritual.outputs.STATUS }}"
+          echo "Review Progress: ${{ steps.ritual.outputs.PR_LINK }}"
