@@ -1,0 +1,24 @@
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+
+app = FastAPI()
+
+@app.get("/dashboard", response_class=HTMLResponse)
+async def dashboard(request: Request):
+    return """
+    <body style="background:#000; color:#d4af37; font-family:sans-serif; text-align:center; padding-top:100px;">
+        <h1>NIA LESANE :: DASHBOARD</h1>
+        <p>Quantum Status: <b>Superposition Optimal</b></p>
+        <div style="border:1px solid #d4af37; display:inline-block; padding:20px;">
+            <h3>Ritual Logs</h3>
+            <code style="color:#fff;">[System]: Antigravity Enabled... OK</code><br>
+            <code style="color:#fff;">[System]: GitHub Output Migrated... OK</code>
+        </div>
+        <br><br>
+        <a href="/buy" style="color:#000; background:#d4af37; padding:15px; text-decoration:none; font-weight:bold;">HIRE NIA ($497)</a>
+    </body>
+    """
+
+@app.get("/buy")
+async def buy():
+    return {"message": "Redirecting to Stripe...", "checkout_url": "https://buy.stripe.com/nia_lesane_custom"}
