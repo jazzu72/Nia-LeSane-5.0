@@ -1,0 +1,16 @@
+# Contributing to Nia LeSane
+
+Welcome to the House of Jazzu. We value code that has soul, precision, and autonomy.
+
+## The Ritual (Workflow)
+Before submitting a Pull Request, ensure:
+1. **The Brain is Healthy:** Run `pytest` to ensure the Python core logic is intact.
+2. **Gravity is Optional:** Ensure your additions do not break the `antigravity` ethos.
+3. **Clean Outputs:** Use `$GITHUB_OUTPUT` for all workflow variables. No legacy `set-output`.
+
+## How to Contribute
+- **Bug Fixes:** Open an issue titled "Static in the Jazz."
+- **Feature Requests:** Open an issue titled "New Movement."
+- **Quantum Improvements:** Direct collaboration on Azure Quantum modules is encouraged.
+
+All contributors must respect the safe, self-improving nature of Nia.
