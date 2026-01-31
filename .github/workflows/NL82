@@ -1,0 +1,34 @@
+from fastapi import FastAPI, HTTPException, Body, Security
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+import os
+
+app = FastAPI(title="Nia LeSane 5.0 - CEO Core")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+class Ritual(BaseModel):
+    type: str
+    password: str
+
+@app.get("/api/health")
+async def health():
+    return {"status": "operational", "entity": "Nia LeSane", "role": "CEO"}
+
+@app.post("/api/invoke")
+async def invoke_protocol(ritual: Ritual):
+    # Security Layer: The HNIC validation
+    if ritual.password != os.getenv("SPECIAL_PASSWORD"):
+        raise HTTPException(status_code=403, detail="Ritual Credentials Denied")
+    
+    # Placeholder for Governance/Quantum Logic
+    return {
+        "status": "Success",
+        "message": f"Nia LeSane has authorized the {ritual.type} protocol.",
+        "firm": "House of Jazzu LLC"
+    }
