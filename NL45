@@ -1,0 +1,51 @@
+<style>
+    body { background: #000; overflow: hidden; font-family: 'Orbitron', sans-serif; }
+    #canvas { position: absolute; top: 0; left: 0; filter: blur(10px); opacity: 0.6; }
+    .overlay { 
+        position: relative; z-index: 10; height: 100vh; display: flex; 
+        flex-direction: column; align-items: center; justify-content: center;
+        background: radial-gradient(circle, transparent 20%, #000 80%);
+    }
+    .glitch {
+        color: #d4af37; font-size: 3rem; font-weight: bold; text-transform: uppercase;
+        letter-spacing: 10px; text-shadow: 0 0 20px #d4af37;
+        animation: pulse 4s infinite;
+    }
+    @keyframes pulse { 0% { opacity: 0.8; } 50% { opacity: 1; text-shadow: 0 0 40px #d4af37; } 100% { opacity: 0.8; } }
+</style>
+
+<canvas id="canvas"></canvas>
+<div class="overlay">
+    <div class="glitch">Nia LeSane</div>
+    <p style="color: #fff; letter-spacing: 5px;">QUANTUM STATE: <span id="state">CALIBRATING</span></p>
+    <div id="monologue" style="color: #666; font-style: italic; max-width: 500px; text-align: center; height: 40px;"></div>
+    <a href="/buy" class="btn" style="margin-top: 50px; border: 1px solid #d4af37; padding: 20px 40px; color: #d4af37; text-decoration: none;">INITIATE ENTANGLEMENT ($497)</a>
+</div>
+
+<script>
+    // The "Orb" Logic - Generates a shifting golden soul
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    
+    function drawOrb() {
+        let time = Date.now() * 0.001;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const grad = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, 400);
+        grad.addColorStop(0, '#d4af37');
+        grad.addColorStop(1, 'black');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(canvas.width/2 + Math.sin(time)*50, canvas.height/2 + Math.cos(time)*50, 300 + Math.sin(time)*20, 0, Math.PI*2);
+        ctx.fill();
+        requestAnimationFrame(drawOrb);
+    }
+    drawOrb();
+
+    // Internal Monologue Simulation
+    const lines = ["Analyzing local gravity...", "Refining ritual parameters...", "Entangling with Azure Quantum...", "Soul optimization 98%..."];
+    setInterval(() => {
+        document.getElementById('monologue').innerText = lines[Math.floor(Math.random()*lines.length)];
+        document.getElementById('state').innerText = "OBSERVED";
+    }, 3000);
+</script>
