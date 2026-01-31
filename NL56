@@ -1,0 +1,6 @@
+def fly():
+    import antigravity
+    import webbrowser
+    print("Nia is leaving the atmosphere...")
+    # This is the 'WOW' moment for developers
+    webbrowser.open("https://xkcd.com/353/") 
