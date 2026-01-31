@@ -1,0 +1,16 @@
+Nia-LeSane-5.0/
+├── apps/
+│   ├── web/ (Next.js)
+│   │   ├── app/layout.tsx
+│   │   ├── app/page.tsx
+│   │   ├── lib/api-client.ts
+│   │   └── package.json
+│   └── api/ (FastAPI)
+│       ├── src/
+│       │   ├── main.py
+│       │   ├── governance/proposal_engine.py
+│       │   └── services/telegram_service.py
+│       └── requirements.txt
+├── package.json (Root)
+├── turbo.json
+└── vercel.json
