@@ -1,0 +1,3 @@
+- name: Play Success Soundscape
+  run: python app/ritual_audio.py
+  if: success()
