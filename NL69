@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "name": "nia-lesane",
+  "buildCommand": "cd apps/web && npm run build",
+  "outputDirectory": "apps/web/.next",
+  "builds": [
+    { "src": "apps/api/src/main.py", "use": "@vercel/python" },
+    { "src": "apps/web/package.json", "use": "@vercel/next" }
+  ],
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "apps/api/src/main.py" },
+    { "source": "/(.*)", "destination": "apps/web/$1" }
+  ]
+}
