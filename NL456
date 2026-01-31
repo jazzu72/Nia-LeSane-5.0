@@ -1,0 +1,14 @@
+from fastapi import FastAPI
+from .quantum_auth import HouseOfJazzuAuth
+
+app = FastAPI()
+auth_engine = HouseOfJazzuAuth()
+
+@app.get("/verify/{email}")
+async def verify_instance(email: str):
+    proof = auth_engine.generate_proof(email)
+    return {
+        "agent": "Nia LeSane",
+        "license": "HQ-1 Quantum License",
+        "proof_of_authenticity": proof
+    }
