@@ -1,0 +1,4 @@
+git status          # see what changed
+git add .github/workflows
+git commit -m "Remove Terraform from CI for initial launch"
+git push
